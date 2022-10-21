@@ -109,7 +109,7 @@ const Content = () => {
         return (
           <>
             <Link to={`/${v.uuid}`} style={{ textDecoration: "none" }}>
-              <ListItem alignItems="flex-start" key={v.uuid}>
+              <ListItem alignItems="flex-start" key={v.uuid} sx={{ py: 0 }}>
                 <img
                   src={`${v.image_url}`}
                   srcSet={`${v.image_url}`}
@@ -122,8 +122,6 @@ const Content = () => {
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     marginRight: 10,
-                    marginTop: 3,
-                    marginBottom: 3,
                   }}
                 />
                 <ListItemText
@@ -169,10 +167,13 @@ const Content = () => {
                       </Typography>
                     </>
                   }
+                  sx={{
+                    my: 0,
+                  }}
                 />
               </ListItem>
             </Link>
-            {i + 1 < data.length && <Divider component="li" />}
+            {i + 1 < data.length && <Divider component="li" sx={{ my: 2 }} />}
           </>
         );
       })}

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import MainCard from "../../components/cards/MainCard";
-import SkeletonPopularCard from "../../components/cards/Skeleton/PopularCard";
+import SkeletonPopularCard from "../../components/cards/Skeleton/HeadlineCard";
 import { gridSpacing } from "../../store/constants";
 
 const HeadlineNews = ({ isLoading }) => {

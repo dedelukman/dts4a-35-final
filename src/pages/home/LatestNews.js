@@ -8,8 +8,10 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import TimeAgo from "react-timeago";
 import { Link } from "react-router-dom";
+import LatestNewsCard from "../../components/cards/Skeleton/LatestNewsCard";
 
 const LatestNews = () => {
+  const [isLoading, setisLoading] = useState(true);
   const [data, setData] = useState([
     {
       uuid: "3bce4bc8-6363-44a8-9a76-44ee1e05ebec",
@@ -106,79 +108,92 @@ const LatestNews = () => {
   ]);
 
   return (
-    <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-      {data.map((v, i) => {
-        return (
-          <>
-            <Link to={`/${v.uuid}`} style={{ textDecoration: "none" }}>
-              <ListItem alignItems="flex-start" key={v.uuid}>
-                <img
-                  src={`${v.image_url}`}
-                  srcSet={`${v.image_url}`}
-                  alt={v.title}
-                  loading="lazy"
-                  style={{
-                    height: 80,
-                    borderRadius: 12,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    marginRight: 10,
-                    marginTop: 3,
-                    marginBottom: 3,
-                  }}
-                />
-                <ListItemText
-                  primary={
-                    <Typography
-                      component="h3"
-                      variant="h3"
-                      sx={{
-                        display: "-webkit-box",
-                        overflow: "hidden",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 2,
+    <>
+      {isLoading ? (
+        <>
+          <LatestNewsCard />
+          <LatestNewsCard />
+          <LatestNewsCard />
+        </>
+      ) : (
+        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+          {data.map((v, i) => {
+            return (
+              <>
+                <Link to={`/${v.uuid}`} style={{ textDecoration: "none" }}>
+                  <ListItem alignItems="flex-start" key={v.uuid} sx={{ py: 0 }}>
+                    <img
+                      src={`${v.image_url}`}
+                      srcSet={`${v.image_url}`}
+                      alt={v.title}
+                      loading="lazy"
+                      style={{
+                        height: 80,
+                        borderRadius: 12,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        marginRight: 10,
                       }}
-                    >
-                      {v.title}
-                    </Typography>
-                  }
-                  secondary={
-                    <>
-                      <Typography
-                        component="span"
-                        variant="subtitle2"
-                        sx={{
-                          m: 0,
-                        }}
-                      >
-                        {v.source} &#183;{" "}
-                        <TimeAgo date={new Date(v.published_at)} />
-                      </Typography>
-                      <Typography
-                        component="span"
-                        variant="subtitle1"
-                        color="text.primary"
-                        sx={{
-                          display: "-webkit-box",
-                          overflow: "hidden",
-                          WebkitBoxOrient: "vertical",
-                          WebkitLineClamp: 1,
-                          lineHeight: 1,
-                        }}
-                      >
-                        {v.snippet}
-                      </Typography>
-                    </>
-                  }
-                />
-              </ListItem>
-            </Link>
-            {i + 1 < data.length && <Divider component="li" />}
-          </>
-        );
-      })}
-    </List>
+                    />
+                    <ListItemText
+                      primary={
+                        <Typography
+                          component="h3"
+                          variant="h3"
+                          sx={{
+                            display: "-webkit-box",
+                            overflow: "hidden",
+                            WebkitBoxOrient: "vertical",
+                            WebkitLineClamp: 2,
+                          }}
+                        >
+                          {v.title}
+                        </Typography>
+                      }
+                      secondary={
+                        <>
+                          <Typography
+                            component="span"
+                            variant="subtitle2"
+                            sx={{
+                              m: 0,
+                            }}
+                          >
+                            {v.source} &#183;{" "}
+                            <TimeAgo date={new Date(v.published_at)} />
+                          </Typography>
+                          <Typography
+                            component="span"
+                            variant="subtitle1"
+                            color="text.primary"
+                            sx={{
+                              display: "-webkit-box",
+                              overflow: "hidden",
+                              WebkitBoxOrient: "vertical",
+                              WebkitLineClamp: 1,
+                              lineHeight: 1,
+                            }}
+                          >
+                            {v.snippet}
+                          </Typography>
+                        </>
+                      }
+                      sx={{
+                        my: 0,
+                      }}
+                    />
+                  </ListItem>
+                </Link>
+                {i + 1 < data.length && (
+                  <Divider component="li" sx={{ my: 2 }} />
+                )}
+              </>
+            );
+          })}
+        </List>
+      )}
+    </>
   );
 };
 

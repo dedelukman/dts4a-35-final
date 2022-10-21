@@ -50,6 +50,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
         <ButtonBase
           sx={{
             display: { xs: "block", md: "none" },
+            marginLeft: 1,
           }}
         >
           <Avatar
@@ -58,13 +59,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: "all .2s ease-in-out",
-              background: theme.palette.primary.light,
-              color: theme.palette.primary.dark,
+              background: theme.palette.grey[200],
+              color: theme.palette.grey[500],
               "&:hover": {
-                background: theme.palette.primary.dark,
-                color: theme.palette.primary.light,
+                background: theme.palette.grey[500],
+                color: theme.palette.grey[200],
               },
-              marginLeft: 1,
             }}
             onClick={handleLeftDrawerToggle}
             color="inherit"
@@ -77,8 +77,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
   );
 };
 
-Header.propTypes = {
-  handleLeftDrawerToggle: PropTypes.func,
-};
+// Header.propTypes = {
+//   handleLeftDrawerToggle: PropTypes.func,
+// };
 
 export default Header;

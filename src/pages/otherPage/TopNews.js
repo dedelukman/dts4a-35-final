@@ -14,7 +14,6 @@ import { useTheme } from "@mui/material/styles";
 
 // project imports
 import MainCard from "../../components/cards/MainCard";
-import TotalIncomeCard from "../../components/cards/Skeleton/TotalIncomeCard";
 
 // assets
 import { useState } from "react";
@@ -85,7 +84,8 @@ const TopNews = ({ isLoading }) => {
   return (
     <>
       {isLoading ? (
-        <TotalIncomeCard />
+        // <TotalIncomeCard />
+        <></>
       ) : (
         data.map((v, i) => {
           return (

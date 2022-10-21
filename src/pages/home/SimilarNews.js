@@ -14,11 +14,11 @@ import { useTheme } from "@mui/material/styles";
 
 // project imports
 import MainCard from "../../components/cards/MainCard";
-import TotalIncomeCard from "../../components/cards/Skeleton/TotalIncomeCard";
 
 // assets
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SimilarCard from "../../components/cards/Skeleton/SimilarCard";
 
 // ==============================|| DASHBOARD - TOTAL INCOME LIGHT CARD ||============================== //
 
@@ -85,7 +85,10 @@ const SimilarNews = ({ isLoading }) => {
   return (
     <>
       {isLoading ? (
-        <TotalIncomeCard />
+        <>
+          <SimilarCard />
+          <SimilarCard />
+        </>
       ) : (
         data.map((v, i) => {
           return (

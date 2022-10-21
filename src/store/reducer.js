@@ -1,6 +1,7 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import customizationReducer from "./customizationReducer";
-
-const reducer = combineReducers({ customization: customizationReducer });
+import { combineReducers } from "redux";
+import customization from "./customization";
+const reducer = combineReducers({
+  customization,
+});
 
 export default reducer;

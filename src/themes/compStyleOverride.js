@@ -1,3 +1,5 @@
+import { Title } from "@mui/icons-material";
+
 export default function componentStyleOverrides(theme) {
   const bgColor = theme.colors?.grey50;
   return {
@@ -180,6 +182,13 @@ export default function componentStyleOverrides(theme) {
         tooltip: {
           color: theme.paper,
           background: theme.colors?.grey700,
+        },
+      },
+    },
+    MuiImageListItemBar: {
+      styleOverrides: {
+        title: {
+          whiteSpace: "wrap",
         },
       },
     },

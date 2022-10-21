@@ -13,9 +13,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-
-// project imports
-import { MENU_OPEN, SET_MENU } from "../../../../store/actions";
+import { MENU_OPEN, SET_MENU } from "../../../../store/customization";
 
 // assets
 
@@ -42,8 +40,8 @@ const Item = ({ item, level }) => {
   }
 
   const itemHandler = (id) => {
-    dispatch({ type: MENU_OPEN, id });
-    if (matchesSM) dispatch({ type: SET_MENU, opened: false });
+    dispatch(MENU_OPEN(id));
+    if (matchesSM) dispatch(SET_MENU(false));
   };
 
   // active menu item on page load
