@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import LoginPage from './containers/LoginPage';
+import RegisterPage from './containers/RegisterPage';
+
+import ProtectedComponent from './components/ProtectedComponent';
+
 // import roboto
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -13,7 +20,21 @@ import '@fontsource/roboto/700.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        {/* Kita akan gunakan di sini dan nge-slot App */}
+        <Route
+          path='/'
+          element={
+            <ProtectedComponent>
+              <App />
+            </ProtectedComponent>
+          }
+        />
+        <Route path='login' element={<LoginPage />} />
+        <Route path='register' element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

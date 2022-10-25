@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 
 // Your web app's Firebase configuration
@@ -34,7 +35,14 @@ const registrationUserWithEmailAndPassword = async (email, password) => {
       email,
       password
     );
-  } catch (error) {}
+
+    console.log('success ', userCredential.user);
+  } catch (error) {
+    console.log(error);
+
+    console.log('error code auth', error.code);
+    console.log('error message auth', error.message);
+  }
 };
 
 // Function for Sign In
@@ -45,19 +53,39 @@ const signInUserWithEmailAndPassword = async (email, password) => {
       email,
       password
     );
-  } catch (error) {}
+    console.log('success ', userCredential.user);
+  } catch (error) {
+    console.log(error);
+    console.log('error code auth', error.code);
+    console.log('error message auth', error.message);
+  }
+};
+
+// Function reset password
+const resetPassword = async (email) => {
+  // Dokumentasi: https://firebase.google.com/docs/reference/js/auth.md#sendpasswordresetemail
+  try {
+    await sendPasswordResetEmail(auth, email);
+
+    console.log('Password reset sudah dikirimkan');
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Function for Sign out
 const signOutUser = async () => {
   try {
     await signOut(auth);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export {
   auth,
   registrationUserWithEmailAndPassword,
   signInUserWithEmailAndPassword,
+  resetPassword,
   signOutUser,
 };
