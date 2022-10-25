@@ -3,33 +3,33 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gridSpacing } from "../../store/constants";
 import {
-  selectLoadingState,
-  selectNews,
+  headlineNews,
+  selectHeadlineNews,
+  selectSources,
+  selectTopNews,
+  sources,
   topNews,
 } from "../../store/customization";
 import CorauselNews from "./CorauselNews";
 import HeadlineNews from "./HeadlineNews";
 import LatestNews from "./LatestNews";
-import SimilarNews from "./SimilarNews";
+import SourceList from "./SourceList";
 
-const Home = () => {
-  const isLoading = useSelector(selectLoadingState);
-  // const news = useSelector(selectNews);
-  const news = [
-    {
-      image_url: "https://img.rasset.ie/000800cd-1600.jpg",
-      title:
-        "lorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit amet",
-      snippet:
-        "lorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit ametlorem ipsun dolor sit amet",
-    },
-  ];
+function Home() {
+  const topNewsData = useSelector(selectTopNews);
+  // const topNewsData = [];
+  const headlineNewsData = useSelector(selectHeadlineNews);
+  // const headlineNewsData = [];
 
-  const dispatch = useDispatch();
+  const sourceData = useSelector(selectSources);
+
+  const dispatcher = useDispatch();
 
   useEffect(() => {
-    // dispatch(topNews(5));
-  }, [dispatch]);
+    dispatcher(sources());
+    dispatcher(headlineNews());
+    dispatcher(topNews({ limit: 5, local: "us" }));
+  }, [dispatcher]);
 
   return (
     <Grid container spacing={gridSpacing}>
@@ -48,8 +48,7 @@ const Home = () => {
         </Grid>
         <Grid container spacing={gridSpacing}>
           <Grid item xs={12} md={9}>
-            {/* <TotalGrowthBarChart isLoading={isLoading} /> */}
-            <CorauselNews data={news} isLoading="true" />
+            <CorauselNews data={topNewsData.data} />
             <Grid
               container
               spacing={gridSpacing}
@@ -87,10 +86,10 @@ const Home = () => {
                   spacing={gridSpacing}
                 >
                   <Grid item>
-                    <Typography variant="h3">Similar News</Typography>
+                    <Typography variant="h3">Source List</Typography>
                   </Grid>
                 </Grid>
-                <SimilarNews isLoading={!isLoading} />
+                <SourceList data={sourceData.data} />
               </Grid>
             </Grid>
           </Grid>
@@ -104,12 +103,12 @@ const Home = () => {
               height: 0,
             }}
           >
-            <HeadlineNews isLoading={!isLoading} />
+            <HeadlineNews data={headlineNewsData[0]} />
           </Grid>
         </Grid>
       </Grid>
     </Grid>
   );
-};
+}
 
 export default Home;

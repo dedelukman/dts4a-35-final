@@ -1,8 +1,8 @@
-import headline from "./headline";
-import topStories from "./top-stories";
+import localeItem from "./locale";
 
 const menuItem = {
-  items: [headline, topStories],
+  // items: [headline, topStories],
+  items: localeItem,
 };
 
 export default menuItem;
