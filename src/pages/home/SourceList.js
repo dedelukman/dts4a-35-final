@@ -7,6 +7,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SourceCard from "../../components/cards/Skeleton/SourceCard";
 import CategoriesList from "./CategoriesList";
 
 export default function SourceList({ data }) {
@@ -14,17 +15,16 @@ export default function SourceList({ data }) {
 
   const handleClick = () => {
     setOpen(!open);
-    // const updateOpen = open[source_id];
-    // updateOpen.isOpen = value;
-    // const newOpen = [...open];
-    // newOpen[source_id] = updateOpen;
-    // setOpen(newOpen);
   };
 
   return (
     <>
       {!data ? (
-        <>Loading</>
+        <>
+          <SourceCard />
+          <SourceCard />
+          <SourceCard />
+        </>
       ) : (
         <List
           sx={{ width: "100%", bgcolor: "background.paper" }}
