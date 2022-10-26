@@ -1,40 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./assets/scss/style.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "./store";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import LoginPage from './containers/LoginPage';
-import RegisterPage from './containers/RegisterPage';
-
-import ProtectedComponent from './components/ProtectedComponent';
-
-// import roboto
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        {/* Kita akan gunakan di sini dan nge-slot App */}
-        <Route
-          path='/'
-          element={
-            <ProtectedComponent>
-              <App />
-            </ProtectedComponent>
-          }
-        />
-        <Route path='login' element={<LoginPage />} />
-        <Route path='register' element={<RegisterPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter basename="/">
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

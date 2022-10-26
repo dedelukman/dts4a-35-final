@@ -1,16 +1,19 @@
-import { ThemeProvider } from '@mui/material';
-import NavBar from './components/NavBar';
-import HomePage from './containers/HomePage';
-import theme from './themes/theme';
+import { useSelector } from "react-redux";
+import { CssBaseline, StyledEngineProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import themes from "./themes";
+import Routes from "./routes";
 
 function App() {
+  const customization = useSelector((state) => state.customization);
+
   return (
-    <ThemeProvider theme={theme}>
-      <div className='App'>
-        <NavBar />
-        <HomePage />
-      </div>
+    // <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={themes(customization)}>
+      <CssBaseline />
+      <Routes />
     </ThemeProvider>
+    // </StyledEngineProvider>
   );
 }
 
