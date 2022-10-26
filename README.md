@@ -2,7 +2,7 @@
 
 ## Video Dokumentasi
 
-![](https://github.com/dts4a-35-final/berita.gif)
+![](https://github.com/dedelukman/dts4a-35-final/berita.gif)
 
 ## Link live app
 
