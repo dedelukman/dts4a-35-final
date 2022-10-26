@@ -2,7 +2,7 @@
 
 ## Video Dokumentasi
 
-![](https://gfycat.com/milddisastrousacornweevil)
+<iframe src='https://gfycat.com/ifr/MildDisastrousAcornweevil' frameborder='0' scrolling='no' allowfullscreen width='640' height='336'></iframe>
 
 ## Link live app
 
