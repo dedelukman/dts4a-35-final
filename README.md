@@ -1,19 +1,26 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+## Video Dokumentasi
 
-## Daftar pair
+![](https://gfycat.com/milddisastrousacornweevil)
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+## Link live app
 
-## Fork and Clone
+https://shimmering-chimera-aea2b5.netlify.app/
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+## Feature
 
-`dts4[a/b/c]-[nomor pair]-final`
+- login
+- logout
+- register
+- halaman utama
+- halaman detail
+- Pencarian berita
+- menu header random 
+- menu serupa jika liat detail, 
+- infinity loop (masih bug)
 
-Contoh: `dts4a-01-final`
 
-## Branching, commit
+### LICENSE
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
